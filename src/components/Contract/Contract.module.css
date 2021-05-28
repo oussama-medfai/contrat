@@ -1,0 +1,38 @@
+.container {
+  width: 80%;
+  height: 100%;
+  background: rgba(70, 66, 66, 0.014);
+  margin: auto;
+  padding: 10px;
+}
+
+.one {
+  width: 50%;
+  height: 100%;
+  background: red;
+  float: left;
+}
+
+.two {
+  margin-left: 50%;
+  height: 100%;
+  background: red;
+}
+.containers {
+  display: flex;
+  flex-direction: row;
+}
+
+.ones {
+  flex: 1 1 0px;
+  border: 1px solid black;
+}
+
+.twos {
+  flex: 1 1 0px;
+  border: 1px solid black;
+}
+.tres {
+  flex: 1 1 0px;
+  border: 1px solid black;
+}

@@ -167,7 +167,7 @@ const Contract = () => {
   };
   return (
     <div className={style.container}>
-      <h1>Contrat</h1>
+      <h1>zzzzzzzzzzzzzzzz</h1>
       <div className={style.one}>
         <label>
           Nom:

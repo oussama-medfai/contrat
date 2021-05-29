@@ -69,7 +69,7 @@ const Contract = () => {
     evt.preventDefault();
     setState({ ...state, [evt.target.name]: evt.target.value });
   };
-  const pdfformat = () => {
+  const pdfToFormat = () => {
     var doc = new jsPDF();
     doc.text(state.name, 10, 40);
     doc.text(state.lastname, 10, 45);
@@ -176,7 +176,7 @@ const Contract = () => {
         </label>
         <br />
         <label>
-          Prenom:
+          Prénom:
           <br />
           <input type="text" name="lastname" onChange={handleSubmit} />
         </label>
@@ -511,7 +511,7 @@ const Contract = () => {
           </label>
         </div>
       </div>
-      <button onClick={() => pdfformat()}>generate pdf</button>
+      <button onClick={() => pdfToFormat()}>generate pdf</button>
     </div>
   );
 };

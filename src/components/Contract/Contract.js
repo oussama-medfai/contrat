@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { jsPDF } from "jspdf";
 import style from "./Contract.module.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Container, Input } from "reactstrap";
 // Create styles
 
 // Create Document Component
@@ -65,16 +67,15 @@ const Contract = () => {
   });
 
   const handleSubmit = (evt) => {
-    console.log(evt);
     evt.preventDefault();
     setState({ ...state, [evt.target.name]: evt.target.value });
   };
   const pdfToFormat = () => {
-    var doc = new jsPDF();
-    doc.text(state.name, 10, 40);
-    doc.text(state.lastname, 10, 45);
+    var doc = new jsPDF("p", "cm", "a4");
+    doc.text(state.name, 1.5,1);
+    doc.text(state.lastname, 2, 2);
     if (state.naiss !== undefined) {
-      doc.text(state.naiss, 10, 50);
+      doc.text(state.naiss, 3, 3);
     }
 
     doc.text(state.lieunais, 10, 55);
@@ -166,180 +167,260 @@ const Contract = () => {
     doc.output("dataurlnewwindow");
   };
   return (
-    <div className={style.container}>
+    <div>
       <h1>zzzzzzzzzzzzzzzz</h1>
-      <div className={style.one}>
-        <label>
-          Nom:
-          <br />
-          <input type="text" name="name" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          Prénom:
-          <br />
-          <input type="text" name="lastname" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          date naissance:
-          <br />
-          <input type="date" name="naiss" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          lieu de naissance:
-          <br />
-          <input type="text" name="lieunais" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          adresse:
-          <br />
-          <input type="text" name="adresse" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          telephone:
-          <br />
-          <input type="number" name="telephone" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          profession:
-          <br />
-          <input type="text" name="profession" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          CIN:
-          <br />
-          <input type="number" name="CIN" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          Délivrée le:
-          <br />
-          <input type="date" name="CINdiliv" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          lieu:
-          <br />
-          <input type="text" name="CINlieu" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          permis de conduire N:
-          <br />
-          <input type="text" name="permi" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          delivre le:
-          <br />
-          <input type="date" name="permidate" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          lieu:
-          <br />
-          <input type="text" name="permilieu" onChange={handleSubmit} />
-        </label>
-      </div>
-      <div className={style.two}>
-        <label>
-          Nom:
-          <br />
-          <input type="text" name="name1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          Prenom:
-          <br />
-          <input type="text" name="lastname1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          date naissance:
-          <br />
-          <input type="date" name="naiss1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          lieu de naissance:
-          <br />
-          <input type="text" name="lieunais1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          adresse:
-          <br />
-          <input type="text" name="adresse1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          telephone:
-          <br />
-          <input type="number" name="telephone1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          profession:
-          <br />
-          <input type="text" name="profession1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          CIN:
-          <br />
-          <input type="number" name="CIN1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          Délivrée le:
-          <br />
-          <input type="date" name="CINdiliv1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          lieu:
-          <br />
-          <input type="text" name="CINlieu1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          permis de conduire N:
-          <br />
-          <input type="text" name="permi1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          delivre le:
-          <br />
-          <input type="date" name="permidate1" onChange={handleSubmit} />
-        </label>
-        <br />
-        <label>
-          lieu:
-          <br />
-          <input type="text" name="permilieu1" onChange={handleSubmit} />
-        </label>
-      </div>
-      <div>
-        <label>
-          type de véhicule& marque:
-          <input type="text" name="marque" onChange={handleSubmit} />
-        </label>
-        <label>
-          Matricule:
-          <input type="number" name="matricule" onChange={handleSubmit} />
-        </label>
-        <label>
-          TU:
-          <input type="number" name="TU" onChange={handleSubmit} />
-        </label>
-      </div>
+
+      <Container>
+        <Row>
+          <Col>
+            Nom:
+            <br />
+            <input type="text" name="name" onChange={handleSubmit} />
+          </Col>
+          <Col>
+            <label>
+              Nom:
+              <br />
+              <input type="text" name="name1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <label>
+              Prénom:
+              <br />
+              <input type="text" name="lastname" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            <label>
+              Prenom:
+              <br />
+              <input type="text" name="lastname1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <label>
+              date naissance:
+              <br />
+              <input type="date" name="naiss" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            <label>
+              date naissance:
+              <br />
+              <input type="date" name="naiss1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <label>
+              lieu de naissance:
+              <br />
+              <input type="text" name="lieunais" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            <label>
+              lieu de naissance:
+              <br />
+              <input type="text" name="lieunais1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {" "}
+            <label>
+              adresse:
+              <br />
+              <input type="text" name="adresse" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            {" "}
+            <label>
+              adresse:
+              <br />
+              <input type="text" name="adresse1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {" "}
+            <label>
+              telephone:
+              <br />
+              <input type="number" name="telephone" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            {" "}
+            <label>
+              telephone:
+              <br />
+              <input type="number" name="telephone1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <label>
+              profession:
+              <br />
+              <input type="text" name="profession" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            <label>
+              profession:
+              <br />
+              <input type="text" name="profession1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <label>
+              CIN:
+              <br />
+              <input type="number" name="CIN" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            <label>
+              CIN:
+              <br />
+              <input type="number" name="CIN1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {" "}
+            <label>
+              Délivrée le:
+              <br />
+              <input type="date" name="CINdiliv" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            {" "}
+            <label>
+              Délivrée le:
+              <br />
+              <input type="date" name="CINdiliv1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {" "}
+            <label>
+              lieu:
+              <br />
+              <input type="text" name="CINlieu" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            {" "}
+            <label>
+              lieu:
+              <br />
+              <input type="text" name="CINlieu1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {" "}
+            <label>
+              permis de conduire N:
+              <br />
+              <input type="text" name="permi" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            <label>
+              permis de conduire N:
+              <br />
+              <input type="text" name="permi1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {" "}
+            <label>
+              delivre le:
+              <br />
+              <input type="date" name="permidate" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            {" "}
+            <label>
+              delivre le:
+              <br />
+              <input type="date" name="permidate1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {" "}
+            <label>
+              lieu:
+              <br />
+              <input type="text" name="permilieu" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            {" "}
+            <label>
+              lieu:
+              <br />
+              <input type="text" name="permilieu1" onChange={handleSubmit} />
+            </label>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col>
+            <label>
+              véhicule& marque:
+              <Input type="text" name="marque" onChange={handleSubmit} />
+            </label>
+          </Col>
+          <Col>
+            <label>
+              Matricule:
+              <Input
+                type="number"
+                bsSize="sm"
+                name="matricule"
+                onChange={handleSubmit}
+              />
+            </label>
+            <label>
+              <Input
+                type="number"
+                bsSize="sm"
+                name="TU"
+                onChange={handleSubmit}
+                placeholder="Tunis"
+              />
+            </label>
+          </Col>
+        </Row>
+      </Container>
       <div className={style.containers}>
         <div className={style.ones}>
           <label>

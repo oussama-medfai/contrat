@@ -72,49 +72,49 @@ const Contract = () => {
   };
   const pdfToFormat = () => {
     var doc = new jsPDF("p", "cm", "a4");
-    doc.text(state.name, 1.5,1);
-    doc.text(state.lastname, 2, 2);
+    doc.text(state.name, 1, 1);
+    doc.text(state.lastname, 2, 1);
     if (state.naiss !== undefined) {
-      doc.text(state.naiss, 3, 3);
+      doc.text(state.naiss, 3, 1);
     }
 
-    doc.text(state.lieunais, 10, 55);
-    doc.text(state.adresse, 10, 60);
-    doc.text(state.telephone, 10, 65);
-    doc.text(state.profession, 10, 70);
+    doc.text(state.lieunais, 4, 1);
+    doc.text(state.adresse, 5, 1);
+    doc.text(state.telephone, 6, 1);
+    doc.text(state.profession, 7, 1);
     if (state.CIN !== 0) {
-      doc.text(state.CIN, 10, 75);
+      doc.text(state.CIN, 8, 1);
     }
     if (state.CINdiliv !== undefined) {
-      doc.text(state.CINdiliv, 10, 80);
+      doc.text(state.CINdiliv, 9, 1);
     }
-    doc.text(state.CINlieu, 10, 85);
-    doc.text(state.permi, 10, 90);
+    doc.text(state.CINlieu, 10, 1);
+    doc.text(state.permi, 11, 1);
     if (state.permidate !== undefined) {
-      doc.text(state.permidate, 10, 95);
+      doc.text(state.permidate, 12, 1);
     }
-    doc.text(state.permilieu, 10, 100);
-    doc.text(state.name1, 140, 40);
-    doc.text(state.lastname1, 140, 45);
+    doc.text(state.permilieu, 13, 1);
+    doc.text(state.name1, 13, 2);
+    doc.text(state.lastname1, 13, 3);
     if (state.naiss1 !== undefined) {
-      doc.text(state.naiss1, 140, 50);
+      doc.text(state.naiss1, 13, 4);
     }
-    doc.text(state.lieunais1, 140, 55);
-    doc.text(state.adresse1, 140, 60);
-    doc.text(state.telephone1, 140, 65);
-    doc.text(state.profession1, 140, 70);
+    doc.text(state.lieunais1, 13, 5);
+    doc.text(state.adresse1, 13, 6);
+    doc.text(state.telephone1, 13, 7);
+    doc.text(state.profession1, 13, 8);
     if (state.CIN1 !== 0) {
-      doc.text(state.CIN1, 140, 75);
+      doc.text(state.CIN1, 13, 9);
     }
     if (state.CINdiliv1 !== undefined) {
-      doc.text(state.CINdiliv1, 140, 80);
+      doc.text(state.CINdiliv1, 13, 10);
     }
-    doc.text(state.CINlieu1, 140, 85);
-    doc.text(state.permi1, 140, 90);
+    doc.text(state.CINlieu1, 13, 11);
+    doc.text(state.permi1, 13, 12);
     if (state.permidate1 !== undefined) {
-      doc.text(state.permidate1, 140, 95);
+      doc.text(state.permidate1, 13, 13);
     }
-    doc.text(state.permilieu1, 140, 100);
+    doc.text(state.permilieu1, 13, 13);
     doc.text(state.marque, 20, 140);
     if (state.matricule !== 0) {
       doc.text(state.matricule, 120, 140);

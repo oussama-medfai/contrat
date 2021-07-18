@@ -178,7 +178,7 @@ const Contract = () => {
   };
   return (
     <div>
-      <h1>zzzzzzzzzzzzzzzz</h1>
+      <h1>Contract printer</h1>
 
       <Container>
         <Row>

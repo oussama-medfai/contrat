@@ -63,7 +63,10 @@ const Contract = () => {
     HT_client: "",
     TVA_client: "",
     timbre_client: "",
-    totale: ""
+    totale: "",
+    cheque: null,
+    cart: null,
+    espece: null
   });
 
   const handleSubmit = (evt) => {
@@ -71,99 +74,106 @@ const Contract = () => {
     setState({ ...state, [evt.target.name]: evt.target.value });
   };
   const pdfToFormat = () => {
-    var doc = new jsPDF("p", "cm", "a4");
-    doc.text(state.name, 1, 1);
-    doc.text(state.lastname, 2, 1);
+    var doc = new jsPDF("p", "cm");
+    doc.text(state.name, 2.5, 6);
+    doc.text(state.lastname, 3, 6.5);
     if (state.naiss !== undefined) {
-      doc.text(state.naiss, 3, 1);
+      doc.text(state.naiss, 2.5, 7);
     }
 
-    doc.text(state.lieunais, 4, 1);
-    doc.text(state.adresse, 5, 1);
-    doc.text(state.telephone, 6, 1);
-    doc.text(state.profession, 7, 1);
+    doc.text(state.lieunais, 2, 7.5);
+    doc.text(state.adresse, 3, 8);
+    doc.text(state.telephone, 2.5, 8.5);
+    doc.text(state.profession, 3.5, 9);
     if (state.CIN !== 0) {
-      doc.text(state.CIN, 8, 1);
+      doc.text(state.CIN, 5, 9.5);
     }
     if (state.CINdiliv !== undefined) {
-      doc.text(state.CINdiliv, 9, 1);
+      doc.text(state.CINdiliv, 3.5, 10);
     }
-    doc.text(state.CINlieu, 10, 1);
-    doc.text(state.permi, 11, 1);
+    doc.text(state.CINlieu, 2, 10.5);
+    doc.text(state.permi, 5, 11);
     if (state.permidate !== undefined) {
-      doc.text(state.permidate, 12, 1);
+      doc.text(state.permidate, 3.5, 11.5);
     }
-    doc.text(state.permilieu, 13, 1);
-    doc.text(state.name1, 13, 2);
-    doc.text(state.lastname1, 13, 3);
+    doc.text(state.permilieu, 2, 12);
+    doc.text(state.name1, 12.5, 6);
+    doc.text(state.lastname1, 13, 6.5);
     if (state.naiss1 !== undefined) {
-      doc.text(state.naiss1, 13, 4);
+      doc.text(state.naiss1, 12.5, 7);
     }
-    doc.text(state.lieunais1, 13, 5);
-    doc.text(state.adresse1, 13, 6);
-    doc.text(state.telephone1, 13, 7);
-    doc.text(state.profession1, 13, 8);
+    doc.text(state.lieunais1, 12, 7.5);
+    doc.text(state.adresse1, 13, 8);
+    doc.text(state.telephone1, 12.5, 8.5);
+    doc.text(state.profession1, 13.5, 9);
     if (state.CIN1 !== 0) {
-      doc.text(state.CIN1, 13, 9);
+      doc.text(state.CIN1, 15, 9.5);
     }
     if (state.CINdiliv1 !== undefined) {
-      doc.text(state.CINdiliv1, 13, 10);
+      doc.text(state.CINdiliv1, 13.2, 10);
     }
-    doc.text(state.CINlieu1, 13, 11);
-    doc.text(state.permi1, 13, 12);
+    doc.text(state.CINlieu1, 12, 10.5);
+    doc.text(state.permi1, 15, 11);
     if (state.permidate1 !== undefined) {
-      doc.text(state.permidate1, 13, 13);
+      doc.text(state.permidate1, 13.5, 11.5);
     }
-    doc.text(state.permilieu1, 13, 13);
-    doc.text(state.marque, 20, 140);
+    doc.text(state.permilieu1, 12, 12);
+    doc.text(state.marque, 3, 14);
     if (state.matricule !== 0) {
-      doc.text(state.matricule, 120, 140);
+      doc.text(state.matricule, 11.5, 14);
     }
     if (state.TU !== 0) {
-      doc.text(state.TU, 180, 140);
+      doc.text(state.TU, 17.5, 14);
     }
     doc.setFontSize(9);
     if (state.date_dep !== undefined) {
-      doc.text(state.date_dep, 35, 150);
+      doc.text(state.date_dep, 4, 14.7);
     }
-    doc.text(state.lieu_dep, 35, 153);
-    doc.text(state.time_dep, 35, 156);
+    doc.text(state.lieu_dep, 4, 15.1);
+    doc.text(state.time_dep, 4, 15.5);
     if (state.date_ret !== undefined) {
-      doc.text(state.date_ret, 80, 150);
+      doc.text(state.date_ret, 10, 14.7);
     }
-    doc.text(state.lieu_ret, 80, 153);
-    doc.text(state.time_ret, 80, 156);
+    doc.text(state.lieu_ret, 10, 15.1);
+    doc.text(state.time_ret, 10, 15.5);
     if (state.date_pro !== undefined) {
-      doc.text(state.date_pro, 120, 150);
+      doc.text(state.date_pro, 16.8, 14.7);
     }
-    doc.text(state.lieu_pro, 120, 153);
-    doc.text(state.time_pro, 120, 156);
+    doc.text(state.lieu_pro, 16.8, 15.1);
+    doc.text(state.time_pro, 16.8, 15.5);
 
     if (state.km_depart !== 0) {
-      doc.text(state.km_depart, 35, 180);
+      doc.text(state.km_depart, 3, 17.4);
     }
     if (state.km_ret !== 0) {
-      doc.text(state.km_ret, 75, 180);
+      doc.text(state.km_ret, 6.5, 17.4);
     }
     if (state.km_par !== 0) {
-      doc.text(state.km_par, 125, 180);
+      doc.text(state.km_par, 12.3, 17.4);
     }
     if (state.km_fac !== 0) {
-      doc.text(state.km_fac, 175, 180);
+      doc.text(state.km_fac, 17.5, 17.4);
     }
-    doc.text(state.caution, 30, 200);
-    doc.text(state.name_chau, 40, 210);
-    doc.text(state.CIN_chau, 40, 214);
-    doc.text(state.permi_chau, 44, 218);
-    doc.text(state.nom_client, 140, 195);
-    doc.text(state.mat_client, 140, 200);
-    doc.text(state.duree_client, 140, 205);
-    doc.text(state.PP_client, 140, 210);
-    doc.text(state.charge_client, 140, 215);
-    doc.text(state.HT_client, 140, 220);
-    doc.text(state.TVA_client, 140, 225);
-    doc.text(state.timbre_client, 140, 230);
-    doc.text(state.totale, 140, 235);
+    doc.text(state.caution, 3, 19.3);
+    doc.text(state.name_chau, 4, 20.9);
+    doc.text(state.CIN_chau, 4, 21.4);
+    doc.text(state.permi_chau, 4.5, 21.9);
+    doc.text(state.nom_client, 14.5, 18.9);
+    doc.text(state.mat_client, 14.5, 19.4);
+    doc.text(state.duree_client, 14.5, 19.9);
+    doc.text(state.PP_client, 14.5, 20.4);
+    doc.text(state.charge_client, 14.5, 21);
+    doc.text(state.HT_client, 14.5, 21.6);
+    doc.text(state.TVA_client, 14.5, 22.2);
+    doc.text(state.timbre_client, 14.5, 22.7);
+    doc.text(state.totale, 14.5, 23.6);
+    if(state.cheque){
+       doc.text('X',3.1,18.7)
+    }
+    if(state.cart){
+    doc.text('X',6.8,18.7)}
+    if(state.cheque){
+    doc.text('X',9.4,18.7)}
     doc.output("dataurlnewwindow");
   };
   return (
@@ -501,15 +511,15 @@ const Contract = () => {
         <div className={style.one}>
           <label>
             Chéque:
-            <input type="checkbox" />
+            <input type="checkbox" name="cheque" onChange={handleSubmit} />
           </label>
           <label>
             Carte de crédit:
-            <input type="checkbox" />
+            <input type="checkbox" name="cart" onChange={handleSubmit} />
           </label>
           <label>
             Espéce:
-            <input type="checkbox" />
+            <input type="checkbox" name="espece" onChange={handleSubmit} />
           </label>
           <br />
           <label>
